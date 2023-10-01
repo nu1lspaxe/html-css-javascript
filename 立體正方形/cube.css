@@ -1,0 +1,30 @@
+body {
+    height: 100vh;
+    padding: 3rem;
+}
+
+.cube {
+    height: 90vh;
+}
+
+#top {
+    background-color: #cbc7c7;
+    width: 240px;
+    height: 60px;
+    transform: skewX(-45deg) translateX(30px);
+}
+
+#center {
+    background-color: rgb(165, 163, 163);
+    display: inline-block;
+    height: 240px;
+    width: 240px;
+}
+
+#right {
+    background-color: gray;
+    display: inline-block;
+    height: 240px;
+    width: 60px;
+    transform: skewY(-45deg) translateY(-30px);
+}
