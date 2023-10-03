@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <script src="../jquery-3.7.1.js"></script>
+    <script src="video.js"></script>
+</head>
+<body>
+    <video src="video.mp4"></video> <!-- 加上 controls 顯示預設控制介面-->
+
+    <!-- 自定義控制介面 -->
+    <div>
+        <button id="play-video">Play</button>
+        <button id="pause-video">Pause</button>
+        <button id="replay-video">Replay</button>
+        <!-- 自行建立進度條，需要 撥放時間 + 總共時間 -->
+        <span id="timer"></span>
+    </div>
+</body>
+</html>
