@@ -1,0 +1,10 @@
+/* 定義 [blink] 動畫 */
+@keyframes blink {
+    0% {opacity: 0;}
+    50% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.effect {
+    animation: blink 1s infinite;     /* 套用動畫名稱 長度 持續進行*/
+}

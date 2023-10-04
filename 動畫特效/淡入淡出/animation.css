@@ -1,0 +1,8 @@
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: darkcyan;
+    opacity: 0.5;
+    /* transition 可以用來監控 CSS 屬性 [opacity]，供js進行處理 */
+    transition: opacity .5s, background-color .5s;    
+}
