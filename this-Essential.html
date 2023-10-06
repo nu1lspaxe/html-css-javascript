@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函式的綁定物件(This) 基本</title>
+</head>
+<body>
+    <script>
+        // this 代表函式的【綁定物件】，不同脈絡下代表不同東西
+
+        // case A: 獨立的函式
+        function caseA() {
+            console.log(this);  //  'this' is window 物件
+            console.log(this.innerWidth);   // 印出視窗寬度
+        }
+        caseA();
+
+        // case B: 物件的方法
+        let objB = {
+            value: 2,
+            caseB: function() {
+                console.log(this);  // 'this' 是方法所屬的物件本身
+                console.log(this.value);
+            }
+        }
+        objB.caseB();
+
+        // case C: 事件處理函式
+        document.addEventListener("click", function() {
+            console.log(this);  // 'this' 是觸發事件的對象物件
+            this.body.innerHTML = 'caseC';
+        })
+
+        // case D: 建構函式
+        function caseD() {
+            console.log(this);  // 'this' 是瀏覽器自動新建立的空物件
+            this.x = 4;
+            this.y = 4;
+        }
+        let D = new caseD();
+        console.log(D);
+    </script>
+</body>
+</html>

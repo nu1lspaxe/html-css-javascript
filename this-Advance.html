@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函式的綁定物件(This) 進階</title>
+</head>
+<body>
+     <script>
+        // this 進階: 自訂的綁定物件
+        
+        // case A: bind 設定綁定物件
+        function caseA() {
+            console.log("綁定物件: ", this);
+        }
+        caseA();
+        let A = caseA.bind({value:1});  // 決定this會是什麼
+        A();
+        let A2 = caseA.bind(document);
+        A2();
+
+        // case B: apply 設定綁定物件
+        function caseB(x, y) {
+            console.log("計算結果: ", Math.sqrt(Math.pow(x, 2)+Math.pow(y, 2)));
+            console.log("綁定物件: ", this);
+        }
+        caseB(3, 4);
+        caseB.apply({value:2}, [6, 8]); // apply(綁定物件, 參數陣列)
+        caseB.apply(document, [9, 12]);
+
+        // case C: call 設定綁定物件
+        caseB.call({value:3}, 12, 16);
+     </script>
+</body>
+</html>
