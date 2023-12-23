@@ -1,0 +1,14 @@
+{
+  "name": "project.1",
+  "version": "1.0.0",
+  "description": "made by Nu1LSpaxe",
+  "main": "promise.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Nu1LSpaxe",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
