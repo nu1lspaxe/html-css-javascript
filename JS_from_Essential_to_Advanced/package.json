@@ -1,17 +1,11 @@
 {
-  "name": "project.1",
+  "name": "js_from_essential_to_advanced",
   "version": "1.0.0",
-  "description": "made by Nu1LSpaxe",
-  "main": "promise.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest"
   },
   "author": "Nu1LSpaxe",
   "license": "ISC",
-  "devDependencies": {
-    "@babel/core": "^7.23.6",
-    "@babel/node": "^7.22.19",
-    "@babel/preset-env": "^7.23.6",
-    "jest": "^29.7.0"
-  }
+  "description": ""
 }
