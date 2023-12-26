@@ -7,7 +7,7 @@ console.log(
 // Get arguments passed on command line
 const userArgs = process.argv.slice(2); // [mongodb link]
 
-// import require models
+// Import require models
 const Book = require("./models/book");
 const Author = require("./models/author");
 const Genre = require("./models/genre");
@@ -16,7 +16,7 @@ const BookInstance = require("./models/bookinstance");
 const genres = [];
 const authors = [];
 const books = [];
-const bookInstances = [];
+const bookinstances = [];
 
 const mongoose = require("mongoose");
 // strictQuery: true => only defined columns can be converted; false => otherwise.
@@ -27,8 +27,8 @@ const mongoDB = userArgs[0]; // mongodb link
 // catch error if has any
 main().catch((err) => console.log(err));
 
-// initialize
-// noticeable: in javascript, we don't have exactly 'main()' funtion as entry point
+// Initialize
+// note: in javascript, we don't have exactly 'main()' funtion as entry point
 async function main() {
   console.log("Debug: About to connect");
   await mongoose.connect(mongoDB);
@@ -42,7 +42,7 @@ async function main() {
 }
 
 // pass the index to ___Create functions => create unit instance
-// it will be down by Promise.all()
+// It will be down by Promise.all()
 async function genreCreate(index, name) {
   const genre = new Genre({ name: name });
   await genre.save();
@@ -55,6 +55,7 @@ async function authorCreate(index, first_name, last_name, date_of_birth) {
   if (date_of_birth != false) authorDetail.date_of_birth = date_of_birth;
 
   const author = new Author(authorDetail);
+  await author.save();
   authors[index] = author;
   console.log(`Added author: ${first_name} ${last_name}`);
 }
@@ -75,18 +76,18 @@ async function bookCreate(index, title, summary, isbn, author, genre) {
   console.log(`Added book: ${title}`);
 }
 
-async function bookInstanceCreate(index, book, imprint, due_back, status) {
-  const bookInstanceDetail = {
+async function bookinstanceCreate(index, book, imprint, due_back, status) {
+  const bookinstanceDetail = {
     book: book,
     imprint: imprint,
   };
-  if (status != false) bookInstanceDetail.status = status;
-  if (due_back != false) bookInstanceDetail.due_back = due_back;
+  if (status != false) bookinstanceDetail.status = status;
+  if (due_back != false) bookinstanceDetail.due_back = due_back;
 
-  const bookInstance = new BookInstance(bookInstanceDetail);
-  await bookInstance.save();
-  bookInstances[index] = bookInstance;
-  console.log(`Added bookInstance: ${imprint}`);
+  const bookinstance = new BookInstance(bookinstanceDetail);
+  await bookinstance.save();
+  bookinstances[index] = bookinstance;
+  console.log(`Added bookinstance: ${imprint}`);
 }
 
 // create___ => create all(Promise.all) data
@@ -178,16 +179,16 @@ async function createBooks() {
 async function createBookInstances() {
   console.log("Adding authors");
   await Promise.all([
-    bookInstanceCreate(0, books[0], "London Gollancz, 2014.", false, "Available"),
-    bookInstanceCreate(1, books[1], "Gollancz, 2011.", false, "Loaned"),
-    bookInstanceCreate(2, books[2], "Gollancz, 2015.", false, false),
-    bookInstanceCreate(3, books[3], "New York Tom Doherty Associates, 2016.", false, "Available"),
-    bookInstanceCreate(4, books[3], "New York Tom Doherty Associates, 2016.", false, "Available"),
-    bookInstanceCreate(5, books[3], "New York Tom Doherty Associates, 2016.", false, "Available"),
-    bookInstanceCreate(6, books[4], "New York, NY Tom Doherty Associates, LLC, 2015.", false, "Available"),
-    bookInstanceCreate(7, books[4], "New York, NY Tom Doherty Associates, LLC, 2015.", false, "Maintenance"),
-    bookInstanceCreate(8, books[4], "New York, NY Tom Doherty Associates, LLC, 2015.", false, "Loaned"),
-    bookInstanceCreate(9, books[0], "Imprint XXX2", false, false),
-    bookInstanceCreate(10, books[1], "Imprint XXX3", false, false),
+    bookinstanceCreate(0, books[0], "London Gollancz, 2014.", false, "Available"),
+    bookinstanceCreate(1, books[1], "Gollancz, 2011.", false, "Loaned"),
+    bookinstanceCreate(2, books[2], "Gollancz, 2015.", false, false),
+    bookinstanceCreate(3, books[3], "New York Tom Doherty Associates, 2016.", false, "Available"),
+    bookinstanceCreate(4, books[3], "New York Tom Doherty Associates, 2016.", false, "Available"),
+    bookinstanceCreate(5, books[3], "New York Tom Doherty Associates, 2016.", false, "Available"),
+    bookinstanceCreate(6, books[4], "New York, NY Tom Doherty Associates, LLC, 2015.", false, "Available"),
+    bookinstanceCreate(7, books[4], "New York, NY Tom Doherty Associates, LLC, 2015.", false, "Maintenance"),
+    bookinstanceCreate(8, books[4], "New York, NY Tom Doherty Associates, LLC, 2015.", false, "Loaned"),
+    bookinstanceCreate(9, books[0], "Imprint XXX2", false, false),
+    bookinstanceCreate(10, books[1], "Imprint XXX3", false, false),
   ]);
 }
