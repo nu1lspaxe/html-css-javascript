@@ -26,15 +26,30 @@ Mongoose is an ORM on MongoDB. (Good for using schema, and of course, id key)
 
 <br> 
 
+# MVC(Model-View-Controller) Concept
+<img src='https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes/mvc_express.png'>
+
+<br>
+
+# Form Handling
+<img src='https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/forms/web_server_form_handling.png'>
+
+<br>
+
+# Challenge
+1. Varify if book name(written by same writer) has duplicated(same)
+
+<br>
+
 # Appendix
 
-### Why I lose code hint node.js module!!
+### + Why I lose code hint node.js module!!
 > run ```npm i @types/express```
 
-### Use "express-async-handler" without try...catch
+### + Use "express-async-handler" without try...catch
 [express-async-handler](https://www.npmjs.com/package/express-async-handler), this module provides a wrapper function.
 
-### Pug essential tutorial
+### + Pug essential tutorial
 [Template primer](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Displaying_data/Template_primer)
 
 > Other quick notes of Pug
@@ -42,3 +57,8 @@ Mongoose is an ORM on MongoDB. (Good for using schema, and of course, id key)
 > - only named blocks and mixins can appear at the top level of an extending template
 > - use '[tag]=', for example 'h1=', to treat the following text as javascript expression.
 > - `block` tag is used to mark up sections of content that may be replaced in a derived template (if the block is not redefined then its implementation in the base class is used). For example, 'block content' replaces 'content mark base on base template
+> - '[tag]!=' means any HTML tags or special characters within the error message will be rendered as raw HTML
+> - if you want to compare variable with `undefined`, it's necessary to put `undefined` before variable. Such as `(undefine===VARIABLE) ?`
+
+### + Use "express-validator" to validate/sanitize form data
+[express-validator](https://www.npmjs.com/package/express-validator)
