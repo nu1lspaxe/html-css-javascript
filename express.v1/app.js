@@ -3,15 +3,20 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var compression = require('compression');
+var helmet = require('helmet');
 
 var indexRouter = require('./routes/index');
 var catalogRouter = require('./routes/catalog');
 
-var app = express();
+var app = express(); 
+app.use(helmet()); // helps secure Express apps by setting HTTP response headers.
 
 // Set up mongoose connection
+require('dotenv').config({ path: path.resolve(__dirname, './.env') });
+
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb+srv://nu1lspaxeanonym0ux:jlhPhG3At54A9BdB@library.zcdkipu.mongodb.net/?retryWrites=true&w=majority'
+var mongoDB = process.env.MONGODB_URI || 'mongodb+srv://<username>:<password>@library.zcdkipu.mongodb.net/?retryWrites=true&w=majority';
 mongoose.connect(mongoDB);  // Connect to mongoDB (according to link)
 mongoose.Promise = global.Promise; // Set mongoose's Promise is synchronized as global's(Node.js) Promise
 var DB = mongoose.connection; // DB as listening object(connection)
@@ -27,6 +32,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));  // Import third side library
+
+app.use(compression()); //Compress all routes
 
 // Import router
 app.use('/', indexRouter);

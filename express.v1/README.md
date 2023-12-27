@@ -36,11 +36,6 @@ Mongoose is an ORM on MongoDB. (Good for using schema, and of course, id key)
 
 <br>
 
-# Challenge
-1. Varify if book name(written by same writer) has duplicated(same)
-
-<br>
-
 # Appendix
 
 ### + Why I lose code hint node.js module!!
@@ -62,3 +57,11 @@ Mongoose is an ORM on MongoDB. (Good for using schema, and of course, id key)
 
 ### + Use "express-validator" to validate/sanitize form data
 [express-validator](https://www.npmjs.com/package/express-validator)
+
+### + Use gzip/deflate compression for responses
+Web servers can often compress the HTTP response sent back to a client, significantly reducing the time required for the client to get and load the page.
+[compression](https://www.npmjs.com/package/compression)
+
+### + Use Helmet to protect against well known vulnerabilities
+Helmet helps secure Express apps by setting HTTP response headers.
+[Helmet](https://www.npmjs.com/package/helmet)
