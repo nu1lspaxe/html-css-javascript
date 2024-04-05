@@ -17,7 +17,7 @@ app.disable('x-powered-by');
 require('dotenv').config({ path: path.resolve(__dirname, './.env') });
 
 var mongoose = require('mongoose');
-var mongoDB = process.env.MONGODB_URI || 'mongodb+srv://<username>:<password>@library.zcdkipu.mongodb.net/?retryWrites=true&w=majority';
+var mongoDB = process.env.MONGODB_URI;
 mongoose.connect(mongoDB);  // Connect to mongoDB (according to link)
 mongoose.Promise = global.Promise; // Set mongoose's Promise is synchronized as global's(Node.js) Promise
 var DB = mongoose.connection; // DB as listening object(connection)
